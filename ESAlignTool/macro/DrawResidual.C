@@ -11,19 +11,29 @@
 #include "TCanvas.h"
 #include "TLegend.h"
 #include "TStyle.h"
+#include "TString.h"
 #include "TROOT.h"
 #include "CMSstyle.C"
 #include "PlotFunc.C"
 using namespace std;
 void DrawResidual()
 {
-    TCanvas* c1 = new TCanvas("c1","", 850, 700 );
+    TCanvas* c1 = new TCanvas("c1", "", 850, 700 );
     // Change to your results root
-    TFile* fResidual = new TFile("../test/AlignmentFile_iter1.root"); 
+    //TFile* fResidual = new TFile("../test/AlignmentFile_iter2.root"); 
     // The output residual plots ( because it first iteration, so the residual plots is without doing alignment )
     // void drawResidual( TFile* f, TCanvas* c, std::string output_name, int fitRange);
-    drawResidual(fResidual, c1, "MisAlignmentResidual.png", 1);        
+    //drawResidual(fResidual, c1, "MisAlignmentResidual.png", 1);        
 
+    for(int i=1; i<11; ++i)
+    {
+        TString path = Form("../test/AlignmentFile_iter%d.root", i);
+        TString output = Form("MisAlignmentResidual_iter%d.png", i);
+
+        TFile* file = new TFile(path);
+        drawResidual(file, c1, output.Data(), 1);
+    }
+    
     //TFile* fResidual0   = new TFile("results/24May_Run2016B/HLTPhysics_iter0.root");
     //TFile* fResidual1   = new TFile("results/24May_Run2016B/HLTPhysics_iter1.root");
     //TFile* fResidual2   = new TFile("results/24May_Run2016B/HLTPhysics_iter2.root");

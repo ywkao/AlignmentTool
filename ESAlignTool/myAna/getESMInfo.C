@@ -12,14 +12,18 @@
 #include "TTree.h"
 #include "TLegend.h"
 #include "TStyle.h"
+#include "TString.h"
 #include "TROOT.h"
 #include "CalIter_wRotation.h"
 using namespace std;
 
 // Change the number for this iteration 
-const int iterN=1;
+//const int iterN=2;
 
-void getESMInfo(){
+void getESMInfo(int iterN){
+
+    printf("iterN = %d\n", iterN);
+
 	TFile* f;	
 	TTree* t;
 	//f=new TFile("/afs/cern.ch/work/j/jtsai/ESAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test/OnLxplus/24May_Run2016B_iter1/HLTPhysics.root");
@@ -32,7 +36,9 @@ void getESMInfo(){
 	//f=new TFile("/afs/cern.ch/work/j/jtsai/ESAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test/OnLxplus/24May_Run2016B_iter8/HLTPhysics.root");
 	//f=new TFile("/afs/cern.ch/work/j/jtsai/ESAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test/OnLxplus/24May_Run2016B_iter9/HLTPhysics.root");
 	//f=new TFile("/afs/cern.ch/work/j/jtsai/ESAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test/OnLxplus/24May_Run2016B_iter10/HLTPhysics.root");
-	f=new TFile("../test/AlignmentFile_iter1.root");
+    
+    TString input_file; input_file.Form("../test/AlignmentFile_iter%d.root", iterN);
+	f=new TFile(input_file);
 
 	t=(TTree*)f->Get("ESAlignmentTool/tree");
   	CalIter_wRotation caculate;
