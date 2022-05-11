@@ -28,7 +28,7 @@ void DrawResidual()
     for(int i=1; i<11; ++i)
     {
         TString path = Form("../test/AlignmentFile_iter%d.root", i);
-        TString output = Form("MisAlignmentResidual_iter%d.png", i);
+        TString output = Form("./eos/MisAlignmentResidual_iter%d.png", i);
 
         TFile* file = new TFile(path);
         drawResidual(file, c1, output.Data(), 1);

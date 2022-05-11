@@ -22,31 +22,40 @@ process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8_CustomT
 #)
 #process.es_prefer_GlobalPositionDB = cms.ESPrefer("PoolDBESSource", "newESAlignment")
 
+## Case 1. Add your own sqlite db file for validation   
+process.newESAlignment = cms.ESSource("PoolDBESSource",
+        connect = cms.string('sqlite_file:testESAlignments.db'),  # Put the path of your db file
+        toGet= cms.VPSet(cms.PSet(record = cms.string("ESAlignmentRcd"),
+            tag = cms.string('ES'))
+            )
+        )
+process.es_prefer_GlobalPositionDB = cms.ESPrefer("PoolDBESSource", "newESAlignment")
+
 #process.MessageLogger.cerr.FwkReport.reportEvery = cms.untracked.int32( 1000 ) # not work
 
 # Default Parameter options
 from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing('python')
 options.register('IterN', 1,
-    VarParsing.multiplicity.singleton,
-    VarParsing.varType.int,
-    "Alignment iteration number"
-    )
+        VarParsing.multiplicity.singleton,
+        VarParsing.varType.int,
+        "Alignment iteration number"
+        )
 options.register('MaxEvents', -1,
-    VarParsing.multiplicity.singleton,
-    VarParsing.varType.int,
-    "Run events max"
-    )
+        VarParsing.multiplicity.singleton,
+        VarParsing.varType.int,
+        "Run events max"
+        )
 options.register('OutFilename', 'AlignmentFile.root',
-    VarParsing.multiplicity.singleton,
-    VarParsing.varType.string,
-    "Output File name"
-    )
+        VarParsing.multiplicity.singleton,
+        VarParsing.varType.string,
+        "Output File name"
+        )
 options.register('JSONFilename', '',
-    VarParsing.multiplicity.singleton,
-    VarParsing.varType.string,
-    "Input JSON"
-    )
+        VarParsing.multiplicity.singleton,
+        VarParsing.varType.string,
+        "Input JSON"
+        )
 options.register('Debug', False,
     VarParsing.multiplicity.singleton,
     VarParsing.varType.bool,

@@ -1,6 +1,3 @@
 #Automatically created by SCRAM
 import os
-localrt=os.getenv('LOCALRT', None)
-arch=os.getenv('SCRAM_ARCH', None)
-if localrt != None:
-  __path__.append(localrt+'/cfipython/'+arch+'/AlignmentTool/ESAlignTool')
+__path__.append(os.path.dirname(os.path.abspath(__file__).rsplit('/AlignmentTool/ESAlignTool/',1)[0])+'/cfipython/slc7_amd64_gcc530/AlignmentTool/ESAlignTool')
