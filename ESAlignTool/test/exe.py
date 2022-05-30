@@ -8,8 +8,8 @@ parser.add_argument('-m', help = "make residual plots", action = 'store_true')
 parser.add_argument('-r', help = "run the interation code", action = 'store_true')
 args = parser.parse_args()
 
-start_iteration = True
 start_iteration = False
+start_iteration = True
 
 def exe(command):
     if args.e:
@@ -19,7 +19,8 @@ def exe(command):
 
 def run(iteration):
     # run iteration
-    command = "cmsRun AlignIter_cfg.py IterN=%d OutFilename=AlignmentFile_iter%d.root InputRefitter=False TrackLabel=ecalAlCaESAlignTrackReducer" % (iteration, iteration)
+    output = "AlignmentFile_iter%d" % iteration
+    command = "cmsRun AlignIter_cfg.py IterN=%d OutFilename=%s.root InputRefitter=False TrackLabel=ecalAlCaESAlignTrackReducer 2>&1 | tee %s.txt" % (iteration, output, output)
     exe(command)
     
     # retrieve new values
@@ -35,7 +36,7 @@ def run(iteration):
 def make_plots():
     os.chdir("../macro")
     command = "root -l -b -q 'DrawResidual.C'"
-    subprocess.call(command, shell=True)
+    exe(command)
     
     #command = "cp *png /eos/user/y/ykao/www/ESAlignment"
     #subprocess.call(command, shell=True)
@@ -48,7 +49,6 @@ if __name__ == "__main__":
                 run(iteration)
         else:
             iteration = 1
-            iteration = 0
             print ">>> start iteration: %d" % iteration
             run(iteration)
 

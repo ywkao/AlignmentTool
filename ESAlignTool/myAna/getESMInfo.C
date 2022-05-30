@@ -38,6 +38,7 @@ void getESMInfo(int iterN){
 	//f=new TFile("/afs/cern.ch/work/j/jtsai/ESAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test/OnLxplus/24May_Run2016B_iter10/HLTPhysics.root");
     
     TString input_file; input_file.Form("../test/AlignmentFile_iter%d.root", iterN);
+    //TString input_file = "../test/pure_test_iter2.root";
 	f=new TFile(input_file);
 
 	t=(TTree*)f->Get("ESAlignmentTool/tree");
