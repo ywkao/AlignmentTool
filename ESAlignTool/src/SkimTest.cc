@@ -165,7 +165,7 @@ SkimTest::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 		  std::cout<<"   Num validated hits, by checking each hit "<<nValidHit<<std::endl;
 		  //* Check hit patten
 	   	  const reco::HitPattern& hitp = itTrack->hitPattern();
-		  for (int i=0; i<hitp.numberOfHits(reco::HitPattern::TRACK_HITS); i++){ 
+		  for (int i=0; i<hitp.numberOfAllHits(reco::HitPattern::TRACK_HITS); i++){ 
 	  		  hitp.printHitPattern(reco::HitPattern::TRACK_HITS, i, std::cout);
 		  }
 		  Ntrack++;
