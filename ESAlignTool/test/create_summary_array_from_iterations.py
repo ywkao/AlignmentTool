@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-txtfile = "output_20220517/AlignmentFile_iter11.txt"
+txtfile = "output_20220609/AlignmentFile_iter11.txt"
 myfile = "inputMatrixElements_cfi.py"
 detector_labels = ["ESmR", "ESmF", "ESpF", "ESpR"]
 spatial_variables = ["dAlpha", "dBeta", "dGamma", "dX", "dY", "dZ"]
@@ -30,7 +30,7 @@ def init(): #{{{
             d[l][v] = 0.
     return d
 #}}}
-def print_result(d): #{{{
+def print_content(d): #{{{
     print "\n------------------------------\n"
     for l in detector_labels:
         for v in spatial_variables:
@@ -76,7 +76,7 @@ def load_from_inputMatrix(): #{{{
     #--------------------------------------------------
     fin.close()
 
-    print_result(dict_data)
+    print_content(dict_data)
 #}}}
 
 def load():
@@ -160,6 +160,10 @@ def report(dict_data): #{{{
 if __name__ == "__main__":
     dict_data = init()
     result = load()
+
+    #print_content(cms_init)
+    #print_content(result)
+
     diff()
     report(dict_data)
 

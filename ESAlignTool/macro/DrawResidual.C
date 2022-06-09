@@ -16,7 +16,7 @@
 #include "CMSstyle.C"
 #include "PlotFunc.C"
 using namespace std;
-void DrawResidual()
+void DrawResidual(TString directory)
 {
     TCanvas* c1 = new TCanvas("c1", "", 850, 700 );
     // Change to your results root
@@ -27,7 +27,7 @@ void DrawResidual()
 
     for(int i=1; i<11; ++i)
     {
-        TString path = Form("../test/AlignmentFile_iter%d.root", i);
+        TString path = Form("../test/%s/AlignmentFile_iter%d.root", directory.Data(), i);
         TString output = Form("./eos/MisAlignmentResidual_iter%d.png", i);
 
         TFile* file = new TFile(path);
