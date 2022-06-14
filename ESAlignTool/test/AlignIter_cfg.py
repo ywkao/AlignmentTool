@@ -12,19 +12,6 @@ from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8_CustomTrackerAndECAL_2016B_v0', '')
 #process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8', '')
 
-#------------------------------
-# For input DB file
-#------------------------------
-## Check DB content by "conddb -d myfile.db list ES"
-#process.newESAlignment = cms.ESSource("PoolDBESSource",
-#                                       #connect = cms.string('sqlite_file:inputDB.db'),
-#                                       connect = cms.string('sqlite_file:testESAlignments.db'),
-#                                       toGet= cms.VPSet(cms.PSet(record = cms.string("ESAlignmentRcd"),
-#                                                       tag = cms.string('ES'))
-#                                                           )
-#)
-#process.es_prefer_GlobalPositionDB = cms.ESPrefer("PoolDBESSource", "newESAlignment")
-
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.MessageLogger.cerr.FwkReport.reportEvery = cms.untracked.int32( 100 )
 
