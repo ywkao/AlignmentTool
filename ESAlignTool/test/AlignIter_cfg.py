@@ -43,6 +43,11 @@ options.register('MaxEvents', -1,
         VarParsing.varType.int,
         "Run events max"
         )
+options.register('myInputTag', 'default',
+        VarParsing.multiplicity.singleton,
+        VarParsing.varType.string,
+        "Input tag to a group of input files"
+        )
 options.register('OutFilename', 'AlignmentFile.root',
         VarParsing.multiplicity.singleton,
         VarParsing.varType.string,
@@ -115,25 +120,12 @@ options.register('TrackLabel', 'TrackRefitter',
     )
 options.parseArguments()
 
-### Log
-#process.load("FWCore.MessageService.MessageLogger_cfi")
-#process.MessageLogger = cms.Service("MessageLogger",
-#    destinations = cms.untracked.vstring(
-#      'ESAlignmentTool',
-#      ),
-#    ESAlignmentTool = cms.untracked.PSet(
-#      threshold = cms.untracked.string('INFO'),  
-#      ), 
-#    #suppressInfo = cms.untracked.vstring('ESAlignmentTool'),
-#    )
-#
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(options.MaxEvents) )
 
 ### input
 from inputFiles_cfi import * #FileNames 
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring(FileNames)
-    #fileNames = cms.untracked.vstring("root://eoscms//eos/cms/store/data/Run2015A/Jet/RECO/PromptReco-v1/000/247/992/00000/6C94F6E2-2415-E511-BDD0-02163E011938.root")
+    fileNames = cms.untracked.vstring(FileNames[options.myInputTag])
 )
 
 ### output

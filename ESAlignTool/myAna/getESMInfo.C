@@ -20,7 +20,7 @@ using namespace std;
 // Change the number for this iteration 
 //const int iterN=2;
 
-void getESMInfo(int iterN, TString directory){
+void getESMInfo(int iterN, TString rootfile){
 
     printf("iterN = %d\n", iterN);
 
@@ -37,8 +37,7 @@ void getESMInfo(int iterN, TString directory){
 	//f=new TFile("/afs/cern.ch/work/j/jtsai/ESAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test/OnLxplus/24May_Run2016B_iter9/HLTPhysics.root");
 	//f=new TFile("/afs/cern.ch/work/j/jtsai/ESAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test/OnLxplus/24May_Run2016B_iter10/HLTPhysics.root");
     
-    TString input_file; input_file.Form("../test/%s/AlignmentFile_iter%d.root", directory.Data(), iterN);
-	f=new TFile(input_file);
+	f=new TFile(rootfile);
 
 	t=(TTree*)f->Get("ESAlignmentTool/tree");
   	CalIter_wRotation caculate;
