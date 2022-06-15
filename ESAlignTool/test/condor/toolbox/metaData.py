@@ -19,11 +19,11 @@ log        = $(myPath)/condor/{DIR}/log/hello.$(ClusterID).$(ProcID).log
 
 iteration = {ITERN}
 queue arguments from (
-    #AlignIter_cfg.py $(iteration) default AlignmentFile_iter$(iteration).root
-    AlignIter_cfg.py $(iteration) batch01 AlignmentFile_iter$(iteration)_output01.root
-    AlignIter_cfg.py $(iteration) batch02 AlignmentFile_iter$(iteration)_output02.root
-    AlignIter_cfg.py $(iteration) batch03 AlignmentFile_iter$(iteration)_output03.root
-    AlignIter_cfg.py $(iteration) batch04 AlignmentFile_iter$(iteration)_output04.root
-    AlignIter_cfg.py $(iteration) batch05 AlignmentFile_iter$(iteration)_output05.root
+    #AlignIter_cfg.py $(iteration) default AlignmentFile_iter$(iteration).root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch01 AlignmentFile_iter$(iteration)_output01.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch02 AlignmentFile_iter$(iteration)_output02.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch03 AlignmentFile_iter$(iteration)_output03.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch04 AlignmentFile_iter$(iteration)_output04.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch05 AlignmentFile_iter$(iteration)_output05.root $(myPath)/condor/{DIR}
 )
 '''

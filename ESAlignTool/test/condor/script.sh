@@ -7,7 +7,7 @@ export X509_USER_PROXY=/afs/cern.ch/user/y/ykao/x509up_u75423
 env SHELL=/bin/sh gdb cmsRun # https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideTroubleShootingMore
 WD=$PWD
 
-my_working_directory=/afs/cern.ch/work/y/ykao/esAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test/condor/result
+my_working_directory=$5
 cd $my_working_directory
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 eval $(scram runtime -sh)

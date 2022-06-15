@@ -123,6 +123,8 @@ if __name__ == "__main__":
 
     scope = [1]
     scope = range(1,12)
+    scope = range(1,3)
+    scope = range(3,12)
 
     for iteration in scope:
         print "\n================================================== intration:", iteration, "=================================================="
