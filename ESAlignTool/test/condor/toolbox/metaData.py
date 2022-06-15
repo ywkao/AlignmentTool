@@ -4,9 +4,7 @@ content = '''+JobFlavour = "espresso"
 
 periodic_release =  (NumJobStarts < 4) && ((CurrentTime - EnteredCurrentStatus) > 60) 
 
-# need to update executable
 getenv     = True 
-
 myPath     = /afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test
 executable = $(myPath)/condor/script.sh
 input      = $(myPath)/AlignIter_cfg.py
@@ -15,9 +13,9 @@ should_transfer_files = YES
 transfer_input_files  = $(myPath)/inputFiles_cfi.py, $(myPath)/inputMatrixElements_cfi.py
 transfer_output_files = ""
 
-output     = $(myPath)/condor/result/out/hello.$(ClusterID).$(ProcID).out
-error      = $(myPath)/condor/result/err/hello.$(ClusterID).$(ProcID).err
-log        = $(myPath)/condor/result/log/hello.$(ClusterID).$(ProcID).log
+output     = $(myPath)/condor/{DIR}/out/hello.$(ClusterID).$(ProcID).out
+error      = $(myPath)/condor/{DIR}/err/hello.$(ClusterID).$(ProcID).err
+log        = $(myPath)/condor/{DIR}/log/hello.$(ClusterID).$(ProcID).log
 
 iteration = {ITERN}
 queue arguments from (

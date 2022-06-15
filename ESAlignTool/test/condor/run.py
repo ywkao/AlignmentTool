@@ -16,6 +16,7 @@ def init():
     subprocess.call("mkdir -p %s/out" % directory, shell=True)
     subprocess.call("mkdir -p %s/err" % directory, shell=True)
     subprocess.call("mkdir -p %s/log" % directory, shell=True)
+    subprocess.call("mkdir -p %s/tmp" % directory, shell=True)
 
 def exe(command):
     if args.e:
@@ -25,7 +26,9 @@ def exe(command):
 
 def job_monitor():
     print "\n--------------------------------------- start job monitoring ---------------------------------------"
-    time.sleep(10)
+    time.sleep(120) # 2min
+    duration = 120.
+    wait_time = 60.
 
     # monitor condor jobs
     running = True
@@ -47,8 +50,9 @@ def job_monitor():
             print "All jobs are finished!"
             break
         else:
-            print "Remaining jobs (DONE/RUN/IDLE):", ndone, nrun, nidle, ", wait for 30 seconds..."
-            time.sleep(30)
+            print "Remaining jobs (DONE/RUN/IDLE):", ndone, nrun, nidle, ", time = %.1f min, wait for %.0f seconds..." % (duration/60., wait_time)
+            duration += wait_time 
+            time.sleep(wait_time)
 
     # monitor output files
     transferring = True
@@ -58,8 +62,9 @@ def job_monitor():
             print "All output files transferred!", outputfiles
             break
         else:
-            print "Output files coming back. Wait for 10 senconds..."
-            time.sleep(10)
+            print "Output files coming back.", ", time = %.1f min, wait for %.0f senconds..." % (duration/60., wait_time)
+            duration += wait_time 
+            time.sleep(wait_time)
 
     print "-------------------------------------- end of job monitoring ---------------------------------------\n"
 
@@ -67,14 +72,13 @@ def run(iteration):
     # recreate a sub file
     import toolbox.metaData as m
     with open("./submit/exe.sub", 'w') as fsub:
-        fsub.write(m.content.format(ITERN=iteration))
+        fsub.write(m.content.format(ITERN=iteration, DIR=directory))
 
-    if args.e:
-        print "\n---------------------------------------- ./submit/exe.sub ------------------------------------------"
-        subprocess.call("cat ./submit/exe.sub", shell=True)
-        print "----------------------------------------------------------------------------------------------------\n"
-    else:
-        subprocess.call("sed -n '20p' ./submit/exe.sub", shell=True)
+    print "\n---------------------------------------- ./submit/exe.sub ------------------------------------------"
+    with open("./submit/exe.sub", 'r') as fin:
+        for line in fin.readlines():
+            print line.strip()
+    print "----------------------------------------------------------------------------------------------------\n"
 
     # submit jobs
     command = "time condor_submit ./submit/exe.sub"
@@ -87,6 +91,10 @@ def run(iteration):
     # hadd
     rootfile = path + "/test/condor/" + output_file
     command = "hadd -f %s %s" % (rootfile, input_files)
+    exe(command)
+
+    tmp = path + "/test/condor/" + directory + "/tmp"
+    command = "mv %s %s" % (input_files, tmp)
     exe(command)
 
     # retrieve new values
@@ -113,7 +121,10 @@ if __name__ == "__main__":
 
     init()
 
-    for iteration in range(1,12):
+    scope = [1]
+    scope = range(1,12)
+
+    for iteration in scope:
         print "\n================================================== intration:", iteration, "=================================================="
         output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
         input_files = "%s/AlignmentFile_iter%d_output*.root" % (directory, iteration)
