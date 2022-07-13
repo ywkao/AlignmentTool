@@ -1,11 +1,11 @@
 #!/usr/bin/env python2
 
-content = '''+JobFlavour = "espresso"
+content = '''+JobFlavour = "microcentury"
 
 periodic_release =  (NumJobStarts < 4) && ((CurrentTime - EnteredCurrentStatus) > 60) 
 
 getenv     = True 
-myPath     = /afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool/test
+myPath     = {PATH}/test
 executable = $(myPath)/condor/script.sh
 input      = $(myPath)/AlignIter_cfg.py
 
@@ -25,5 +25,20 @@ queue arguments from (
     AlignIter_cfg.py $(iteration) batch03 AlignmentFile_iter$(iteration)_output03.root $(myPath)/condor/{DIR}
     AlignIter_cfg.py $(iteration) batch04 AlignmentFile_iter$(iteration)_output04.root $(myPath)/condor/{DIR}
     AlignIter_cfg.py $(iteration) batch05 AlignmentFile_iter$(iteration)_output05.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch06 AlignmentFile_iter$(iteration)_output06.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch07 AlignmentFile_iter$(iteration)_output07.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch08 AlignmentFile_iter$(iteration)_output08.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch09 AlignmentFile_iter$(iteration)_output09.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch10 AlignmentFile_iter$(iteration)_output10.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch11 AlignmentFile_iter$(iteration)_output11.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch12 AlignmentFile_iter$(iteration)_output12.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch13 AlignmentFile_iter$(iteration)_output13.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch14 AlignmentFile_iter$(iteration)_output14.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch15 AlignmentFile_iter$(iteration)_output15.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch16 AlignmentFile_iter$(iteration)_output16.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch17 AlignmentFile_iter$(iteration)_output17.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch18 AlignmentFile_iter$(iteration)_output18.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch19 AlignmentFile_iter$(iteration)_output19.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch20 AlignmentFile_iter$(iteration)_output20.root $(myPath)/condor/{DIR}
 )
 '''

@@ -3,17 +3,24 @@ import FWCore.ParameterSet.Config as cms
 process = cms.Process("ESAlignmentTool")
 process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
 process.load('Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cff')
-process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff')
+#process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff')
+process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAlong_cfi")
 
 ###################### Modify following Global tag ################################
 ## See https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFrontierConditions
 from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8_CustomTrackerAndECAL_2016B_v0', '')
+process.GlobalTag = GlobalTag(process.GlobalTag, '123X_dataRun3_Prompt_v6', '')
+#process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8_CustomTrackerAndECAL_2016B_v0', '')
 #process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8', '')
 
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.MessageLogger.cerr.FwkReport.reportEvery = cms.untracked.int32( 100 )
+
+## to continue processing events after a ProductNotFound exception
+#process.options = cms.untracked.PSet(
+#        SkipEvent = cms.untracked.vstring('ProductNotFound')
+#)
 
 #------------------------------
 # Default Parameter options
@@ -122,14 +129,14 @@ process.TFileService = cms.Service("TFileService",
 
 ### Check parameters options
 if options.InputRefitter == False and options.TrackLabel == 'TrackRefitter':
-    print 'WARNING: Not using Refit files, options.TrackLabel = generalTracks'
+    print('WARNING: Not using Refit files, options.TrackLabel = generalTracks')
     options.TrackLabel = 'generalTracks' 
-print 'Load lables:'
-print ' options.RecHitLabel = '+options.RecHitLabel
-print ' options.TrackLabel = '+options.TrackLabel
+print('Load lables:')
+print(' options.RecHitLabel = '+options.RecHitLabel)
+print(' options.TrackLabel = '+options.TrackLabel)
 
 if options.IterN == 1 and options.OverwriteRotationM == False:
-    print 'WARNING: First iter, options.OverwriteRotationM = True' 
+    print('WARNING: First iter, options.OverwriteRotationM = True')
     options.OverwriteRotationM = True
 
 ### Input parameters

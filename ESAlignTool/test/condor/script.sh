@@ -11,7 +11,7 @@ my_working_directory=$5
 cd $my_working_directory
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 eval $(scram runtime -sh)
-#export PYTHONHOME=`scram tool info python | grep PYTHON_BASE | sed 's/PYTHON_BASE=//'`
+export PYTHONHOME=`scram tool info python | grep PYTHON_BASE | sed 's/PYTHON_BASE=//'`
 cd $WD
 
 echo ""

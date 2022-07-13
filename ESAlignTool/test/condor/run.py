@@ -8,7 +8,8 @@ parser.add_argument("-o", help = "set output directory", type=str, default = "re
 args = parser.parse_args()
 
 directory = args.o
-path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_8_0_8/src/AlignmentTool/ESAlignTool"
+path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_3_0_pre5/src/AlignmentTool/ESAlignTool"
+NumberExpectedOutputFiles = 20
 
 #----------------------------------------------------------------------------------------------------
 
@@ -26,8 +27,8 @@ def exe(command):
 
 def job_monitor():
     print "\n--------------------------------------- start job monitoring ---------------------------------------"
-    time.sleep(120) # 2min
-    duration = 120.
+    time.sleep(360) # 6min
+    duration = 360.
     wait_time = 60.
 
     # monitor condor jobs
@@ -58,7 +59,7 @@ def job_monitor():
     transferring = True
     while transferring:
         outputfiles = glob.glob(input_files)
-        if len(outputfiles)==5:
+        if len(outputfiles)==NumberExpectedOutputFiles:
             print "All output files transferred!", outputfiles
             break
         else:
@@ -72,7 +73,7 @@ def run(iteration):
     # recreate a sub file
     import toolbox.metaData as m
     with open("./submit/exe.sub", 'w') as fsub:
-        fsub.write(m.content.format(ITERN=iteration, DIR=directory))
+        fsub.write(m.content.format(PATH=path, ITERN=iteration, DIR=directory))
 
     print "\n---------------------------------------- ./submit/exe.sub ------------------------------------------"
     with open("./submit/exe.sub", 'r') as fin:

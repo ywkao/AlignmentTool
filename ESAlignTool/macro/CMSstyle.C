@@ -55,7 +55,8 @@ void CMSstyle(){
 
  // use bold lines and markers
  //cmsStyle->SetMarkerStyle(7);
- cmsStyle->SetHistLineWidth(1.85);
+ //cmsStyle->SetHistLineWidth(1.85);
+ cmsStyle->SetHistLineWidth(2);
  cmsStyle->SetLineStyleString(2,"[12 12]"); // postscript dashes
 
  // do not display any of the standard histogram decorations
