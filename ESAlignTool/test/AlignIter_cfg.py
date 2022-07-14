@@ -1,6 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
-process = cms.Process("ESAlignmentTool")
+from Configuration.Eras.Era_Run3_cff import Run3
+process = cms.Process("ESAlignmentTool", Run3)
 process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
 process.load('Configuration.StandardSequences.MagneticField_AutoFromDBCurrent_cff')
 #process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_condDBv2_cff')
