@@ -23,7 +23,9 @@
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
 #include "Geometry/CaloGeometry/interface/CaloGeometry.h"
+#include "Geometry/Records/interface/CaloGeometryRecord.h"
 #include "MagneticField/Engine/interface/MagneticField.h"
+#include "MagneticField/Records/interface/IdealMagneticFieldRecord.h"
 #include "DataFormats/EcalDetId/interface/ESDetId.h"
 #include "DataFormats/TrackReco/interface/Track.h"
 #include "DataFormats/TrackReco/interface/TrackFwd.h"
@@ -32,6 +34,7 @@
 #include "DataFormats/GeometryVector/interface/GlobalPoint.h"
 #include "DataFormats/GeometrySurface/interface/Plane.h"
 #include "TrackPropagation/SteppingHelixPropagator/interface/SteppingHelixPropagator.h"
+#include "TrackingTools/Records/interface/TrackingComponentsRecord.h"
 
 // ROOT include files
 #include <TFile.h>
@@ -266,6 +269,12 @@ class ESAlignTool : public edm::EDAnalyzer  // public edm::EDAnalyzer
 
         edm::ParameterSet DefaultESLocation_; 
         edm::ParameterSet MatrixElements_; 
+
+
+        edm::ESGetToken<CaloGeometry, CaloGeometryRecord> caloGeometryToken_;
+        edm::ESGetToken<MagneticField, IdealMagneticFieldRecord> theMagFieldToken_;
+        edm::ESGetToken<GlobalTrackingGeometry, GlobalTrackingGeometryRecord> theTrackingGeometryToken_;
+        edm::ESGetToken<Propagator, TrackingComponentsRecord> shPropAlongToken_;
 };
 
 #endif

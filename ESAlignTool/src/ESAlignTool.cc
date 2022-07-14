@@ -70,10 +70,14 @@ Implementation:
 //
 // constructors and destructor
 //
-ESAlignTool::ESAlignTool(const edm::ParameterSet& iConfig)
+ESAlignTool::ESAlignTool(const edm::ParameterSet& p) :
+    caloGeometryToken_(esConsumes<CaloGeometry, CaloGeometryRecord>()),
+    theMagFieldToken_(esConsumes<MagneticField, IdealMagneticFieldRecord>()),
+    theTrackingGeometryToken_(esConsumes<GlobalTrackingGeometry, GlobalTrackingGeometryRecord>()),
+    shPropAlongToken_(esConsumes<Propagator, TrackingComponentsRecord>(edm::ESInputTag("", "SteppingHelixPropagatorAlong")))
 {
     std::cout << "In ESAlignTool Constructor\n" ;
-    initAllPara(iConfig);
+    initAllPara(p);
 }
 
 ESAlignTool::~ESAlignTool()
@@ -337,18 +341,12 @@ ESAlignTool::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     {
         if( _debug ) std::cout<<"Pass EvtRun Selection.\n";
 
-        ESHandle<CaloGeometry> caloGeometry;
-        iSetup.get<CaloGeometryRecord>().get(caloGeometry);
+        auto const& caloGeometry = iSetup.getHandle(caloGeometryToken_);
         const CaloGeometry *caloGeom = caloGeometry.product();
 
-        ESHandle<MagneticField> theMagField; 
-        iSetup.get<IdealMagneticFieldRecord>().get(theMagField); 
-
-        ESHandle<GlobalTrackingGeometry> theTrackingGeometry; 
-        iSetup.get<GlobalTrackingGeometryRecord>().get( theTrackingGeometry ); 
-
-        ESHandle<Propagator> shPropAlong;
-        iSetup.get<TrackingComponentsRecord>().get("SteppingHelixPropagatorAlong", shPropAlong);
+        auto const& theMagField = iSetup.getHandle(theMagFieldToken_); 
+        auto const& theTrackingGeometry = iSetup.getHandle( theTrackingGeometryToken_ ); 
+        auto const& shPropAlong = iSetup.getHandle( shPropAlongToken_ );
 
         //for MagneticField on ES
         if(b_DrawMagField)  LoadMagFieldonES(_evt_run,caloGeom,theMagField);
