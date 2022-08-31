@@ -20,7 +20,7 @@ using namespace std;
 void DrawResidual(int iterN, TString rootfile)
 {
     TCanvas* c1 = new TCanvas("c1", "", 850, 700 );
-    TString output = Form("./eos/MisAlignmentResidual_iter%d.png", iterN);
+    TString output = Form("./eos/MisAlignmentResidual_iter%d", iterN);
 
     TFile* file = new TFile(rootfile);
     drawResidual(file, c1, output.Data(), 1);
