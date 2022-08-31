@@ -9,7 +9,7 @@ args = parser.parse_args()
 
 directory = args.o
 path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_3_0_pre5/src/AlignmentTool/ESAlignTool"
-NumberExpectedOutputFiles = 20
+NumberExpectedOutputFiles = 12 
 
 #----------------------------------------------------------------------------------------------------
 
@@ -27,11 +27,11 @@ def exe(command):
 
 def job_monitor():
     print "\n--------------------------------------- start job monitoring ---------------------------------------"
-    time.sleep(360) # 6min
-    duration = 360.
-    wait_time = 60.
+    time.sleep(1800) # 30 min
+    duration = 1800.
 
     # monitor condor jobs
+    wait_time = 120.
     running = True
     while running:
         counter = 0
@@ -56,6 +56,7 @@ def job_monitor():
             time.sleep(wait_time)
 
     # monitor output files
+    wait_time = 60.
     transferring = True
     while transferring:
         outputfiles = glob.glob(input_files)
@@ -116,16 +117,28 @@ def run(iteration):
     # reset
     os.chdir( path+"/test/condor" )
 
+
+def print_command(iteration):
+    rootfile = path + "/test/condor/" + output_file
+    command = "root -l -b -q 'DrawResidual.C(%d, \"%s\")'" % (iteration, rootfile)
+    print command
+
 #----------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
 
     init()
 
-    scope = range(1,12)
-    scope = range(1,3)
-    scope = range(3,12)
     scope = [1]
+    scope = [2, 3]
+    scope = range(6,12)
+    scope = range(1,12)
+
+    for iteration in scope:
+        output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
+        print_command(iteration)
+
+    exit()
 
     for iteration in scope:
         print "\n================================================== intration:", iteration, "=================================================="

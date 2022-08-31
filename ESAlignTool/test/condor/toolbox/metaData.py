@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 
-content = '''+JobFlavour = "microcentury"
+content = '''+JobFlavour = "longlunch"
 
 periodic_release =  (NumJobStarts < 4) && ((CurrentTime - EnteredCurrentStatus) > 60) 
 
@@ -19,7 +19,6 @@ log        = $(myPath)/condor/{DIR}/log/hello.$(ClusterID).$(ProcID).log
 
 iteration = {ITERN}
 queue arguments from (
-    #AlignIter_cfg.py $(iteration) default AlignmentFile_iter$(iteration).root $(myPath)/condor/{DIR}
     AlignIter_cfg.py $(iteration) batch01 AlignmentFile_iter$(iteration)_output01.root $(myPath)/condor/{DIR}
     AlignIter_cfg.py $(iteration) batch02 AlignmentFile_iter$(iteration)_output02.root $(myPath)/condor/{DIR}
     AlignIter_cfg.py $(iteration) batch03 AlignmentFile_iter$(iteration)_output03.root $(myPath)/condor/{DIR}
@@ -32,13 +31,5 @@ queue arguments from (
     AlignIter_cfg.py $(iteration) batch10 AlignmentFile_iter$(iteration)_output10.root $(myPath)/condor/{DIR}
     AlignIter_cfg.py $(iteration) batch11 AlignmentFile_iter$(iteration)_output11.root $(myPath)/condor/{DIR}
     AlignIter_cfg.py $(iteration) batch12 AlignmentFile_iter$(iteration)_output12.root $(myPath)/condor/{DIR}
-    AlignIter_cfg.py $(iteration) batch13 AlignmentFile_iter$(iteration)_output13.root $(myPath)/condor/{DIR}
-    AlignIter_cfg.py $(iteration) batch14 AlignmentFile_iter$(iteration)_output14.root $(myPath)/condor/{DIR}
-    AlignIter_cfg.py $(iteration) batch15 AlignmentFile_iter$(iteration)_output15.root $(myPath)/condor/{DIR}
-    AlignIter_cfg.py $(iteration) batch16 AlignmentFile_iter$(iteration)_output16.root $(myPath)/condor/{DIR}
-    AlignIter_cfg.py $(iteration) batch17 AlignmentFile_iter$(iteration)_output17.root $(myPath)/condor/{DIR}
-    AlignIter_cfg.py $(iteration) batch18 AlignmentFile_iter$(iteration)_output18.root $(myPath)/condor/{DIR}
-    AlignIter_cfg.py $(iteration) batch19 AlignmentFile_iter$(iteration)_output19.root $(myPath)/condor/{DIR}
-    AlignIter_cfg.py $(iteration) batch20 AlignmentFile_iter$(iteration)_output20.root $(myPath)/condor/{DIR}
 )
 '''

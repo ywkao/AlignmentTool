@@ -1,6 +1,7 @@
 FileNames = {
     "default" : [
-        "/store/data/Run2022B/EGamma/ALCARECO/EcalESAlign-PromptReco-v1/000/355/207/00000/a7b89716-0f32-4e93-b8eb-411f6c249a74.root", # 9720 
+        "/store/data/Run2022B/EGamma/ALCARECO/EcalESAlign-PromptReco-v1/000/355/208/00000/fd84ed0a-a472-4b16-936d-e8124d1ebb50.root", # 6143
+        #"/store/data/Run2022B/EGamma/ALCARECO/EcalESAlign-PromptReco-v1/000/355/207/00000/a7b89716-0f32-4e93-b8eb-411f6c249a74.root", # 9720 
         #"/store/data/Run2022B/EGamma/ALCARECO/EcalESAlign-PromptReco-v1/000/355/207/00000/1d603b01-c334-4dfc-9be9-c6e00c155364.root", # 46539
         #"/store/data/Run2022B/EGamma/ALCARECO/EcalESAlign-PromptReco-v1/000/355/208/00000/15078f76-e399-45ef-9bc7-f3cb6fa4bd15.root", # 82511 
         #"/store/data/Run2022B/EGamma/ALCARECO/EcalESAlign-PromptReco-v1/000/355/208/00000/36aeb8bd-e519-4703-ba1c-b5ef957b8c43.root", # 54356 

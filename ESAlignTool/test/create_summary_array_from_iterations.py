@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 txtfile = "output_20220609/AlignmentFile_iter11.txt"
+txtfile = "record_iteration_11.txt"
+
 myfile = "inputMatrixElements_cfi.py"
 detector_labels = ["ESmR", "ESmF", "ESpF", "ESpR"]
 spatial_variables = ["dAlpha", "dBeta", "dGamma", "dX", "dY", "dZ"]
