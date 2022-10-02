@@ -133,12 +133,14 @@ if __name__ == "__main__":
     scope = [2, 3]
     scope = range(6,12)
     scope = range(1,12)
+    scope = range(1,3)
+    scope = range(3,12)
 
-    for iteration in scope:
-        output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
-        print_command(iteration)
+    #for iteration in scope:
+    #    output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
+    #    print_command(iteration)
 
-    exit()
+    #exit()
 
     for iteration in scope:
         print "\n================================================== intration:", iteration, "=================================================="
