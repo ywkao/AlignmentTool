@@ -9,7 +9,7 @@ args = parser.parse_args()
 
 directory = args.o
 path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_3_0_pre5/src/AlignmentTool/ESAlignTool"
-NumberExpectedOutputFiles = 12 
+NumberExpectedOutputFiles = 63 
 
 #----------------------------------------------------------------------------------------------------
 
@@ -129,17 +129,12 @@ if __name__ == "__main__":
 
     init()
 
-    scope = [1]
-    scope = [2, 3]
-    scope = range(6,12)
-    scope = range(1,12)
-    scope = range(1,3)
     scope = range(3,12)
+    scope = range(1,3)
 
     #for iteration in scope:
     #    output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
     #    print_command(iteration)
-
     #exit()
 
     for iteration in scope:

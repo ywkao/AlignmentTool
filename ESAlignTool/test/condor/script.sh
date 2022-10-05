@@ -28,7 +28,7 @@ echo ""
 # main code
 #----------------------------------------------------------------------------------------------------
 echo $@; exe=$1; itern=$2; inputTag=$3; outputFile=$4; echo ""
-time cmsRun ${exe} print IterN=${itern} myInputTag=${inputTag} OutFilename=${outputFile} InputRefitter=False TrackLabel=ecalAlCaESAlignTrackReducer
+time cmsRun ${exe} print IterN=${itern} myInputTag=${inputTag} OutFilename=${outputFile} InputRefitter=False TrackLabel=ecalAlCaESAlignTrackReducer JSONFilename=Cert_Collisions2022_355100_357900_Golden.json
 
 #----------------------------------------------------------------------------------------------------
 # transfer back
