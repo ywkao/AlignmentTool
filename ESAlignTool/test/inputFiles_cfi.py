@@ -1,5 +1,6 @@
 FileNames = {
     "default" : [
+        #"/store/data/Run2022B/EGamma/ALCARECO/EcalESAlign-PromptReco-v1/000/355/208/00000/fd84ed0a-a472-4b16-936d-e8124d1ebb50.root", # 6143
         "/store/data/Run2022B/EGamma/ALCARECO/EcalESAlign-PromptReco-v1/000/355/374/00000/902f7af0-b220-4fb1-84fc-dff6b8c6ead0.root"
     ],
 

@@ -8,7 +8,9 @@ parser.add_argument("-o", help = "set output directory", type=str, default = "re
 args = parser.parse_args()
 
 directory = args.o
-path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_3_0_pre5/src/AlignmentTool/ESAlignTool"
+path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_4_3/src/AlignmentTool/ESAlignTool"
+path = os.getcwd().split("/test/condor")[0]
+
 NumberExpectedOutputFiles = 63 
 
 #----------------------------------------------------------------------------------------------------
@@ -130,7 +132,8 @@ if __name__ == "__main__":
     init()
 
     scope = range(3,12)
-    scope = range(1,3)
+    scope = range(1,2)
+    scope = range(2,12)
 
     #for iteration in scope:
     #    output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)

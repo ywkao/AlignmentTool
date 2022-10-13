@@ -25,8 +25,8 @@ void DrawResidual_comparison()
     TCanvas* c1 = new TCanvas("c1", "", 850, 700 );
     TString output = Form("./eos/AlignmentResidualBA");
 
-    TFile* f1 = new TFile("/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_3_0_pre5/src/AlignmentTool/ESAlignTool/test/condor/result/AlignmentFile_iter1.root");
-    TFile* f2 = new TFile("/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_3_0_pre5/src/AlignmentTool/ESAlignTool/test/condor/result/AlignmentFile_iter11.root");
+    TFile* f1 = new TFile("/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_4_3/src/AlignmentTool/ESAlignTool/test/condor/result/AlignmentFile_iter1.root");
+    TFile* f2 = new TFile("/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_4_3/src/AlignmentTool/ESAlignTool/test/condor/result/AlignmentFile_iter11.root");
 
     drawResidual_BeforeAfter(f1, f2, c1, output.Data(), 1);
 }

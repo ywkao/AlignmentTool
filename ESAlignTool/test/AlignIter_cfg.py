@@ -11,7 +11,10 @@ process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAl
 ###################### Modify following Global tag ################################
 ## See https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFrontierConditions
 from Configuration.AlCa.GlobalTag import GlobalTag
+#process.GlobalTag = GlobalTag(process.GlobalTag, '124X_dataRun3_Prompt_v4', '')
+#process.GlobalTag = GlobalTag(process.GlobalTag, '124X_dataRun3_Prompt_Candidate_2022_08_18_14_11_06', '')
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run3_data', '')
+
 #process.GlobalTag = GlobalTag(process.GlobalTag, '123X_dataRun3_Prompt_v6', '')
 #process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8_CustomTrackerAndECAL_2016B_v0', '')
 #process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8', '')
