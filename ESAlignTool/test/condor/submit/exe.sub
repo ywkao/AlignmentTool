@@ -3,7 +3,7 @@
 periodic_release =  (NumJobStarts < 4) && ((CurrentTime - EnteredCurrentStatus) > 60) 
 
 getenv     = True 
-myPath     = /afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_3_0_pre5/src/AlignmentTool/ESAlignTool/test
+myPath     = /afs/cern.ch/work/y/ykao/esAlignment/CMSSW_12_4_3/src/AlignmentTool/ESAlignTool/test
 executable = $(myPath)/condor/script.sh
 input      = $(myPath)/AlignIter_cfg.py
 
@@ -15,7 +15,7 @@ output     = $(myPath)/condor/result/out/hello.$(ClusterID).$(ProcID).out
 error      = $(myPath)/condor/result/err/hello.$(ClusterID).$(ProcID).err
 log        = $(myPath)/condor/result/log/hello.$(ClusterID).$(ProcID).log
 
-iteration = 2
+iteration = 11
 queue arguments from (
     AlignIter_cfg.py $(iteration) batch01 AlignmentFile_iter$(iteration)_output01.root $(myPath)/condor/result
     AlignIter_cfg.py $(iteration) batch02 AlignmentFile_iter$(iteration)_output02.root $(myPath)/condor/result

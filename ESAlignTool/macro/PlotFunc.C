@@ -34,7 +34,8 @@ void annotate(){
     latex.SetTextAlign(11);
     latex.SetTextSize(16);
     latex.DrawLatex(0.18, 0.965, "#bf{CMS} #it{Preliminary}");
-    latex.DrawLatex(0.68, 0.965, "1 pb^{-1} (13.6 TeV)");
+    latex.DrawLatex(0.68, 0.965, "9.3 pb^{-1} (13.6 TeV)");
+    //latex.DrawLatex(0.68, 0.965, "1 pb^{-1} (13.6 TeV)");
     //latex.DrawLatex(0.65, 0.965, "30 pb^{-1} (13.6 TeV)");
 }
 

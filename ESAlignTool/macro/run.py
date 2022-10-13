@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 import subprocess
 
-path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_3_0_pre5/src/AlignmentTool/ESAlignTool/test/condor/result"
+path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_4_3/src/AlignmentTool/ESAlignTool/test/condor/result"
 
 def exe(command):
     print command
@@ -11,6 +11,8 @@ def exe(command):
 def make_plots():
     command = "root -l -b -q DrawResidual_comparison.C"
     exe(command)
+
+    return
     
     iters = [1, 11]
     for i in iters:
