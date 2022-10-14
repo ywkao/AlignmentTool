@@ -11,7 +11,7 @@ directory = args.o
 path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_4_3/src/AlignmentTool/ESAlignTool"
 path = os.getcwd().split("/test/condor")[0]
 
-NumberExpectedOutputFiles = 63 
+NumberExpectedOutputFiles = 82 
 
 #----------------------------------------------------------------------------------------------------
 
@@ -134,6 +134,7 @@ if __name__ == "__main__":
     scope = range(3,12)
     scope = range(1,2)
     scope = range(2,12)
+    scope = range(8,12)
 
     #for iteration in scope:
     #    output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)

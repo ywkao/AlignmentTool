@@ -11,8 +11,8 @@ process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAl
 ###################### Modify following Global tag ################################
 ## See https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFrontierConditions
 from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run3_data', '')
-#process.GlobalTag = GlobalTag(process.GlobalTag, '123X_dataRun3_Prompt_v6', '')
+#process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run3_data', '')
+process.GlobalTag = GlobalTag(process.GlobalTag, '123X_dataRun3_Prompt_v6', '')
 #process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8_CustomTrackerAndECAL_2016B_v0', '')
 #process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8', '')
 
@@ -22,11 +22,11 @@ process.MessageLogger.cerr.FwkReport.reportEvery = cms.untracked.int32( 1000 )
 # For input DB file
 #------------------------------
 # Check DB content by "conddb -d myfile.db list ES"
-process.newESAlignment = cms.ESSource("PoolDBESSource",
-                                       connect = cms.string('sqlite_file:ESAlignments_Run3_2022B_iter11.db'),
-                                       toGet = cms.VPSet(cms.PSet(record = cms.string("ESAlignmentRcd"), tag = cms.string('ES')))
-)
-process.es_prefer_GlobalPositionDB = cms.ESPrefer("PoolDBESSource", "newESAlignment")
+#process.newESAlignment = cms.ESSource("PoolDBESSource",
+#                                       connect = cms.string('sqlite_file:ESAlignments_Run3_2022B_iter11.db'),
+#                                       toGet = cms.VPSet(cms.PSet(record = cms.string("ESAlignmentRcd"), tag = cms.string('ES')))
+#)
+#process.es_prefer_GlobalPositionDB = cms.ESPrefer("PoolDBESSource", "newESAlignment")
 
 ## to continue processing events after a ProductNotFound exception
 #process.options = cms.untracked.PSet(

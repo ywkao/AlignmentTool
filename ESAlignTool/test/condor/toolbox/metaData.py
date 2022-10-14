@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 
-content = '''+JobFlavour = "longlunch"
+content = '''+JobFlavour = "workday"
 
 periodic_release =  (NumJobStarts < 4) && ((CurrentTime - EnteredCurrentStatus) > 60) 
 
@@ -82,5 +82,24 @@ queue arguments from (
     AlignIter_cfg.py $(iteration) batch61 AlignmentFile_iter$(iteration)_output61.root $(myPath)/condor/{DIR}
     AlignIter_cfg.py $(iteration) batch62 AlignmentFile_iter$(iteration)_output62.root $(myPath)/condor/{DIR}
     AlignIter_cfg.py $(iteration) batch63 AlignmentFile_iter$(iteration)_output63.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch64 AlignmentFile_iter$(iteration)_output64.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch65 AlignmentFile_iter$(iteration)_output65.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch66 AlignmentFile_iter$(iteration)_output66.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch67 AlignmentFile_iter$(iteration)_output67.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch68 AlignmentFile_iter$(iteration)_output68.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch69 AlignmentFile_iter$(iteration)_output69.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch70 AlignmentFile_iter$(iteration)_output70.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch71 AlignmentFile_iter$(iteration)_output71.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch72 AlignmentFile_iter$(iteration)_output72.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch73 AlignmentFile_iter$(iteration)_output73.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch74 AlignmentFile_iter$(iteration)_output74.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch75 AlignmentFile_iter$(iteration)_output75.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch76 AlignmentFile_iter$(iteration)_output76.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch77 AlignmentFile_iter$(iteration)_output77.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch78 AlignmentFile_iter$(iteration)_output78.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch79 AlignmentFile_iter$(iteration)_output79.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch80 AlignmentFile_iter$(iteration)_output80.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch81 AlignmentFile_iter$(iteration)_output81.root $(myPath)/condor/{DIR}
+    AlignIter_cfg.py $(iteration) batch82 AlignmentFile_iter$(iteration)_output82.root $(myPath)/condor/{DIR}
 )
 '''
