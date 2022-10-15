@@ -27,14 +27,15 @@ void setStyle( TH1D* h1, int color, int style){
     h1->SetMarkerSize(0.6);
 }
 
-void annotate(){
+void annotate(TString integrated_luminosity){
     TLatex latex;
     latex.SetNDC();
     latex.SetTextFont(43);
     latex.SetTextAlign(11);
     latex.SetTextSize(16);
     latex.DrawLatex(0.18, 0.965, "#bf{CMS} #it{Preliminary}");
-    latex.DrawLatex(0.68, 0.965, "9.3 pb^{-1} (13.6 TeV)");
+    latex.DrawLatex(0.63, 0.965, integrated_luminosity);
+    //latex.DrawLatex(0.68, 0.965, "9.3 pb^{-1} (13.6 TeV)");
     //latex.DrawLatex(0.68, 0.965, "1 pb^{-1} (13.6 TeV)");
     //latex.DrawLatex(0.65, 0.965, "30 pb^{-1} (13.6 TeV)");
 }
@@ -92,7 +93,7 @@ void drawResidual( TFile* f1, TCanvas* c1, string savePath, float xrange=3, Colo
 
 }
 
-void drawResidual_BeforeAfter( TFile* f1, TFile* f2, TCanvas* c1, string savePath, float xrange=3, Color_t color=2 ){
+void drawResidual_BeforeAfter( TFile* f1, TFile* f2, TString integrated_luminosity, TCanvas* c1, string savePath, float xrange=3, Color_t color=2 ){
     CMSstyle();
     gStyle->SetOptFit(101);
     gStyle->SetFitFormat("3.3g");
@@ -150,28 +151,28 @@ void drawResidual_BeforeAfter( TFile* f1, TFile* f2, TCanvas* c1, string savePat
     pF1->Draw("pe");
     pF2->Draw("pe,same");
     legend->Draw("same");
-    annotate();
+    annotate(integrated_luminosity);
     line0_pF->Draw();
 
     c1->cd(2);
     pR1->Draw("pe");
     pR2->Draw("pe,same");
     legend->Draw("same");
-    annotate();
+    annotate(integrated_luminosity);
     line0_pR->Draw();
 
     c1->cd(3);
     mF1->Draw("pe");
     mF2->Draw("pe,same");
     legend->Draw("same");
-    annotate();
+    annotate(integrated_luminosity);
     line0_mF->Draw();
 
     c1->cd(4);
     mR1->Draw("pe");
     mR2->Draw("pe,same");
     legend->Draw("same");
-    annotate();
+    annotate(integrated_luminosity);
     line0_mR->Draw();
 
     c1->SaveAs( (savePath+".png").c_str());

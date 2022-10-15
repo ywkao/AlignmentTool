@@ -23,7 +23,7 @@ process.MessageLogger.cerr.FwkReport.reportEvery = cms.untracked.int32( 1000 )
 #------------------------------
 # Check DB content by "conddb -d myfile.db list ES"
 process.newESAlignment = cms.ESSource("PoolDBESSource",
-                                       connect = cms.string('sqlite_file:ESAlignments_Run3_2022B_iter11.db'),
+                                       connect = cms.string('sqlite_file:ESAlignments_Run3_2022B_withTrkTag.db'),
                                        toGet = cms.VPSet(cms.PSet(record = cms.string("ESAlignmentRcd"), tag = cms.string('ES')))
 )
 process.es_prefer_GlobalPositionDB = cms.ESPrefer("PoolDBESSource", "newESAlignment")
