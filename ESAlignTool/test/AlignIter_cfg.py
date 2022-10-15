@@ -11,13 +11,18 @@ process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAl
 ###################### Modify following Global tag ################################
 ## See https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFrontierConditions
 from Configuration.AlCa.GlobalTag import GlobalTag
-#process.GlobalTag = GlobalTag(process.GlobalTag, '124X_dataRun3_Prompt_v4', '')
-#process.GlobalTag = GlobalTag(process.GlobalTag, '124X_dataRun3_Prompt_Candidate_2022_08_18_14_11_06', '')
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run3_data', '')
 
-#process.GlobalTag = GlobalTag(process.GlobalTag, '123X_dataRun3_Prompt_v6', '')
-#process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8_CustomTrackerAndECAL_2016B_v0', '')
-#process.GlobalTag = GlobalTag(process.GlobalTag, '80X_dataRun2_Prompt_v8', '')
+process.GlobalTag.toGet = cms.VPSet(
+        cms.PSet(record = cms.string("ESAlignmentRcd"),
+                 tag = cms.string("ES"),
+                 connect = cms.string('sqlite_file:ESAlignments_Run3_2022B_iter11.db')
+        ),
+        cms.PSet(record = cms.string("TrackerAlignmentRcd"),
+                 tag = cms.string("TrackerAlignment_collisions22_v7"),
+                 connect = cms.string("frontier://FrontierProd/CMS_CONDITIONS")
+        )
+)
 
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.MessageLogger.cerr.FwkReport.reportEvery = cms.untracked.int32( 1000 )

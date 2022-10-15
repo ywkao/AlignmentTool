@@ -8,10 +8,9 @@ parser.add_argument("-o", help = "set output directory", type=str, default = "re
 args = parser.parse_args()
 
 directory = args.o
-path = "/afs/cern.ch/user/y/ykao/work/esAlignment/CMSSW_12_4_3/src/AlignmentTool/ESAlignTool"
 path = os.getcwd().split("/test/condor")[0]
 
-NumberExpectedOutputFiles = 63 
+NumberExpectedOutputFiles = 82 
 
 #----------------------------------------------------------------------------------------------------
 
@@ -26,6 +25,13 @@ def exe(command):
         subprocess.call(command, shell=True)
     else:
         print ">>>", command
+        #print command
+
+def rename_directory(sub_dir, iteration):
+    original = path + "/test/condor/" + directory + "/" + sub_dir
+    modified = path + "/test/condor/" + directory + "/" + sub_dir + "_iteration_%d" % (iteration)
+    command = "mv %s %s" % (original, modified)
+    exe(command)
 
 def job_monitor():
     print "\n--------------------------------------- start job monitoring ---------------------------------------"
@@ -101,6 +107,13 @@ def run(iteration):
     command = "mv %s %s" % (input_files, tmp)
     exe(command)
 
+    # prevent >1,000 files in single directories
+    rename_directory("tmp", iteration)
+    rename_directory("log", iteration)
+    rename_directory("err", iteration)
+    rename_directory("out", iteration)
+    init()
+
     # retrieve new values
     os.chdir( path+"/myAna" )
     command = "root -l -q 'getESMInfo.C(%d, \"%s\")'" % (iteration, rootfile)
@@ -132,8 +145,9 @@ if __name__ == "__main__":
     init()
 
     scope = range(3,12)
-    scope = range(1,2)
     scope = range(2,12)
+    scope = range(1,2)
+    scope = range(2,8)
 
     #for iteration in scope:
     #    output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
