@@ -1538,8 +1538,8 @@ ESAlignTool::beginJob()
         t_ESAlign->Branch("_esRecHit_Phi",  &_esRecHit_Phi[0],  "_esRecHit_Phi[Nesrh]/D");
         t_ESAlign->Branch("_esRecHit_siZ", &_esRecHit_siZ[0], "_esRecHit_siZ[Nesrh]/I");
         t_ESAlign->Branch("_esRecHit_siP", &_esRecHit_siP[0], "_esRecHit_siP[Nesrh]/I");
-        t_ESAlign->Branch("_esRecHit_siX", &_esRecHit_siX[0], "_esRecHit_siX[Nesrh]/IL");
-        t_ESAlign->Branch("_esRecHit_siY", &_esRecHit_siY[0], "_esRecHit_siY[Nesrh]/IL");
+        t_ESAlign->Branch("_esRecHit_siX", &_esRecHit_siX[0], "_esRecHit_siX[Nesrh]/I");
+        t_ESAlign->Branch("_esRecHit_siY", &_esRecHit_siY[0], "_esRecHit_siY[Nesrh]/I");
         t_ESAlign->Branch("_esRecHit_Strip", &_esRecHit_Strip[0], "_esRecHit_Strip[Nesrh]/I");
         t_ESAlign->Branch("_esRecHit_Noisy",_esRecHit_Noisy,"_esRecHit_Noisy[Nesrh]/S");
         t_ESAlign->Branch("_esRecHit_MatchedTrk_fromOuter",_esRecHit_MatchedTrk_fromOuter,"_esRecHit_MatchedTrk_fromOuter[Nesrh][Ntrack]/I");

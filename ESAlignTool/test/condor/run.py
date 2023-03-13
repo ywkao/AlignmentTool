@@ -98,6 +98,8 @@ def run(iteration):
     if args.e:
         job_monitor()
 
+    return
+
     # hadd
     rootfile = path + "/test/condor/" + output_file
     command = "hadd -f %s %s" % (rootfile, input_files)
@@ -148,6 +150,7 @@ if __name__ == "__main__":
     scope = range(2,12)
     scope = range(1,2)
     scope = range(2,8)
+    scope = range(8,9)
 
     #for iteration in scope:
     #    output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
@@ -158,6 +161,7 @@ if __name__ == "__main__":
         print "\n================================================== intration:", iteration, "=================================================="
         output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
         input_files = "%s/AlignmentFile_iter%d_output*.root" % (directory, iteration)
+        input_files = "/eos/cms/store/user/ykao/esAlignment/CMSSW_12_4_3/result_20221014_playground/AlignmentFile_iter%d_output*.root" % (iteration)
         run(iteration)
 
     print ">>> finished!"
