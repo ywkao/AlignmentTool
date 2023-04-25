@@ -15,7 +15,7 @@
 // user include files
 #include "FWCore/Framework/interface/ESHandle.h"
 #include "FWCore/Framework/interface/Frameworkfwd.h"
-#include "FWCore/Framework/interface/EDAnalyzer.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
@@ -51,7 +51,7 @@ using namespace edm;
 using namespace reco;   
 using namespace std; 
 
-class SkimTest : public edm::EDAnalyzer  // public edm::EDAnalyzer
+class SkimTest : public one::EDAnalyzer  // public one::EDAnalyzer
 {
 public:
   explicit SkimTest(const edm::ParameterSet&);

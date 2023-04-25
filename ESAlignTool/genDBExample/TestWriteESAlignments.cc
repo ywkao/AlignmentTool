@@ -1,7 +1,7 @@
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "FWCore/Framework/interface/EventSetup.h"
-#include "FWCore/Framework/interface/EDAnalyzer.h"
+#include "FWCore/Framework/interface/one/EDAnalyzer.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 
@@ -10,7 +10,7 @@
 
 typedef WriteESAlignments WEA ;
 
-class TestWriteESAlignments : public edm::EDAnalyzer
+class TestWriteESAlignments : public one::EDAnalyzer
 {
 public:
 
