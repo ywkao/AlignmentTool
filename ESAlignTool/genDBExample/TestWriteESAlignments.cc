@@ -10,7 +10,7 @@
 
 typedef WriteESAlignments WEA ;
 
-class TestWriteESAlignments : public one::EDAnalyzer
+class TestWriteESAlignments : public edm::one::EDAnalyzer<>
 {
 public:
 

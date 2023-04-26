@@ -51,8 +51,7 @@ using namespace edm;
 using namespace reco;   
 using namespace std; 
 
-class SkimTest : public one::EDAnalyzer  // public one::EDAnalyzer
-{
+class SkimTest : public edm::one::EDAnalyzer<> { // public edm::one::EDAnalyzer
 public:
   explicit SkimTest(const edm::ParameterSet&);
   virtual ~SkimTest();

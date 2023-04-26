@@ -51,7 +51,7 @@ using namespace edm;
 using namespace reco;   
 using namespace std; 
  
-class ESAlignTool : public one::EDAnalyzer  // public one::EDAnalyzer
+class ESAlignTool : public edm::one::EDAnalyzer<> // public edm::one::EDAnalyzer
 {
     public:
         explicit ESAlignTool(const edm::ParameterSet&);
