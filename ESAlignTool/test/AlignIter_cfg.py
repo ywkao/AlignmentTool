@@ -14,12 +14,12 @@ from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run3_data', '')
 
 process.GlobalTag.toGet = cms.VPSet(
-        cms.PSet(record = cms.string("ESAlignmentRcd"),
-                 tag = cms.string("ES"),
-                 connect = cms.string('sqlite_file:ESAlignments_Run3_2022B_iter11.db')
-        ),
+        #cms.PSet(record = cms.string("ESAlignmentRcd"),
+        #         tag = cms.string("ES"),
+        #         connect = cms.string('sqlite_file:ESAlignments_Run3_2022B_iter11.db')
+        #),
         cms.PSet(record = cms.string("TrackerAlignmentRcd"),
-                 tag = cms.string("TrackerAlignment_collisions22_v7"),
+                 tag = cms.string("TrackerAlignment_collisions23_v0"),
                  connect = cms.string("frontier://FrontierProd/CMS_CONDITIONS")
         )
 )
