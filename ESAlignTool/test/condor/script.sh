@@ -28,21 +28,20 @@ echo ""
 # main code
 #----------------------------------------------------------------------------------------------------
 echo $@; exe=$1; itern=$2; inputTag=$3; outputFile=$4; echo ""
-#time cmsRun ${exe} print IterN=${itern} myInputTag=${inputTag} OutFilename=${outputFile} InputRefitter=False TrackLabel=ecalAlCaESAlignTrackReducer JSONFilename=Cert_Collisions2022_355100_357900_Golden.json
-time cmsRun ${exe} print IterN=${itern} myInputTag=${inputTag} OutFilename=${outputFile} InputRefitter=False TrackLabel=ecalAlCaESAlignTrackReducer JSONFilename=Cert_Collisions2022_355100_357900_Golden.json StoreDetail=True
+time cmsRun ${exe} print IterN=${itern} myInputTag=${inputTag} OutFilename=${outputFile} InputRefitter=False TrackLabel=ecalAlCaESAlignTrackReducer
+#time cmsRun ${exe} print IterN=${itern} myInputTag=${inputTag} OutFilename=${outputFile} InputRefitter=False TrackLabel=ecalAlCaESAlignTrackReducer JSONFilename=Cert_Collisions2022_355100_357900_Golden.json StoreDetail=True
 
 #----------------------------------------------------------------------------------------------------
 # transfer back
 #----------------------------------------------------------------------------------------------------
 errors=""
-dir_store_rootfiles="/eos/cms/store/user/ykao/esAlignment/CMSSW_12_4_3/result_20221014_playground"
 for file in $(find -name '*.root'); do
-    echo ">>> cp -pv ${file} ${my_working_directory}"; cp -pv ${file} ${dir_store_rootfiles};
+    echo ">>> cp -pv ${file} ${my_working_directory}"; cp -pv ${file} ${my_working_directory};
     if [[ $? != 0 ]]; then errors="$errors $file($?)"; fi
 done
 
 for file in $(find -name 'log*'); do
-    echo ">>> cp -pv ${file} ${my_working_directory}"; cp -pv ${file} ${dir_store_rootfiles};
+    echo ">>> cp -pv ${file} ${my_working_directory}"; cp -pv ${file} ${my_working_directory};
 done
 
 if [[ -n "$errors" ]]; then

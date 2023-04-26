@@ -10,7 +10,7 @@ args = parser.parse_args()
 directory = args.o
 path = os.getcwd().split("/test/condor")[0]
 
-NumberExpectedOutputFiles = 82 
+NumberExpectedOutputFiles = 27 
 
 #----------------------------------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ def job_monitor():
     wait_time = 60.
     transferring = True
     while transferring:
-        outputfiles = glob.glob(input_files)
+        outputfiles = glob.glob(condor_produced_files)
         if len(outputfiles)==NumberExpectedOutputFiles:
             print "All output files transferred!", outputfiles
             break
@@ -98,15 +98,13 @@ def run(iteration):
     if args.e:
         job_monitor()
 
-    return
-
     # hadd
     rootfile = path + "/test/condor/" + output_file
-    command = "hadd -f %s %s" % (rootfile, input_files)
+    command = "hadd -f %s %s" % (rootfile, condor_produced_files)
     exe(command)
 
     tmp = path + "/test/condor/" + directory + "/tmp"
-    command = "mv %s %s" % (input_files, tmp)
+    command = "mv %s %s" % (condor_produced_files, tmp)
     exe(command)
 
     # prevent >1,000 files in single directories
@@ -146,22 +144,13 @@ if __name__ == "__main__":
 
     init()
 
-    scope = range(3,12)
     scope = range(2,12)
     scope = range(1,2)
-    scope = range(2,8)
-    scope = range(8,9)
-
-    #for iteration in scope:
-    #    output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
-    #    print_command(iteration)
-    #exit()
 
     for iteration in scope:
         print "\n================================================== intration:", iteration, "=================================================="
         output_file = "%s/AlignmentFile_iter%d.root" % (directory, iteration)
-        input_files = "%s/AlignmentFile_iter%d_output*.root" % (directory, iteration)
-        input_files = "/eos/cms/store/user/ykao/esAlignment/CMSSW_12_4_3/result_20221014_playground/AlignmentFile_iter%d_output*.root" % (iteration)
+        condor_produced_files = "%s/AlignmentFile_iter%d_output*.root" % (directory, iteration)
         run(iteration)
 
     print ">>> finished!"
