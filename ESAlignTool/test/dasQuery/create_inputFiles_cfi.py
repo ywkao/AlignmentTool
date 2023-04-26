@@ -2,7 +2,7 @@
 import json
 
 output = "inputFiles.json"
-mytxt = "selected_collection_golden_runs.txt"
+mytxt = "list_sorted_runs.txt"
 
 # load
 fin = open(mytxt, 'r')
