@@ -11,13 +11,14 @@ process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAl
 ###################### Modify following Global tag ################################
 ## See https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFrontierConditions
 from Configuration.AlCa.GlobalTag import GlobalTag
-process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run3_data', '')
+#process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run3_data', '')
+process.GlobalTag = GlobalTag(process.GlobalTag, '130X_dataRun3_Express_v2', '')
 
 process.GlobalTag.toGet = cms.VPSet(
-        #cms.PSet(record = cms.string("ESAlignmentRcd"),
-        #         tag = cms.string("ES"),
-        #         connect = cms.string('sqlite_file:ESAlignments_Run3_2022B_iter11.db')
-        #),
+        cms.PSet(record = cms.string("ESAlignmentRcd"),
+                 tag = cms.string("ES"),
+                 connect = cms.string('sqlite_file:ESAlignments_Run3_2022B_iter11.db')
+        ),
         cms.PSet(record = cms.string("TrackerAlignmentRcd"),
                  tag = cms.string("TrackerAlignment_collisions23_v0"),
                  connect = cms.string("frontier://FrontierProd/CMS_CONDITIONS")

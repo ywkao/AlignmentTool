@@ -23,7 +23,7 @@ void DrawResidual_comparison(TString path)
     TString output = Form("./eos/AlignmentResidualBA");
 
     TFile* f1 = new TFile(path+"/AlignmentFile_iter1.root");
-    TFile* f2 = new TFile(path+"/AlignmentFile_iter7.root");
+    TFile* f2 = new TFile(path+"/AlignmentFile_iter11.root");
 
-    drawResidual_BeforeAfter(f1, f2, "12.5 pb^{-1} (13.6 TeV)", c1, output.Data(), 1);
+    drawResidual_BeforeAfter(f1, f2, "20 pb^{-1} (13.6 TeV)", c1, output.Data(), 1);
 }

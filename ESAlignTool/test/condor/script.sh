@@ -21,6 +21,7 @@ echo ">>> ls -lhrt ."; ls -lhrt .
 echo ">>> ls $X509_USER_PROXY"; ls $X509_USER_PROXY
 echo ">>> echo $PYTHONHOME"; echo $PYTHONHOME
 echo ">>> which root"; which root  # check root
+echo ">>> cat AlignIter_cfg.py"; cat AlignIter_cfg.py # check content
 echo "----------------------------------------------------------------------------------------------------"
 echo ""
 

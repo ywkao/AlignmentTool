@@ -144,8 +144,8 @@ if __name__ == "__main__":
 
     init()
 
-    scope = range(2,12)
     scope = range(1,2)
+    scope = range(2,12)
 
     for iteration in scope:
         print "\n================================================== intration:", iteration, "=================================================="

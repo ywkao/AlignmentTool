@@ -17,10 +17,10 @@
 #include "PlotFunc.C"
 using namespace std;
 //void DrawResidual(TString directory)
-void DrawResidual(int iterN, TString rootfile)
+void DrawResidual(int iterN, TString rootfile, TString tag="")
 {
     TCanvas* c1 = new TCanvas("c1", "", 850, 700 );
-    TString output = Form("./eos/MisAlignmentResidual_iter%d", iterN);
+    TString output = Form("./eos/MisAlignmentResidual_iter%d%s", iterN, tag.Data());
 
     TFile* file = new TFile(rootfile);
     drawResidual(file, c1, output.Data(), 1);
