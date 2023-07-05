@@ -10,7 +10,7 @@ args = parser.parse_args()
 directory = args.o
 path = os.getcwd().split("/test/condor")[0]
 
-NumberExpectedOutputFiles = 27 
+NumberExpectedOutputFiles = 10 # use part of 2022 data for tutorial purpose
 
 #----------------------------------------------------------------------------------------------------
 
@@ -144,8 +144,8 @@ if __name__ == "__main__":
 
     init()
 
-    scope = range(1,2)
     scope = range(2,12)
+    scope = range(1,2)
 
     for iteration in scope:
         print "\n================================================== intration:", iteration, "=================================================="
